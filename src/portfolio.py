@@ -24,7 +24,6 @@ class Portfolio:
         return sum(stock.current_value() for stock in self.stocks)
     
     def current_values(self) -> Dict[str, float]:
-
         return {stock.symbol: stock.current_value() for stock in self.stocks}
 
 
