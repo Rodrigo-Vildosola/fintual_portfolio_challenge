@@ -5,13 +5,16 @@ from src.stock import Stock
 class Portfolio:
     def __init__(self, stocks: List[Stock], target_allocations: Dict[str, float]) -> None:
         self.stocks: List[Stock] = stocks
+
+        # We want to normalize the names for symbols, to have all tickers names on upper case
         self.target_allocations: Dict[str, float] = {
             k.upper(): v for k, v in target_allocations.items()
         }
+        # It is critical to check wether our target allocations sum exactly 1
         self._validate_allocations()
 
     def _validate_allocations(self) -> None:
-        # It is critical to check wether our target allocations sum exactly 1
+        """Sums the value of each weight to check wether a Portfolio has the required total_weight for allocatiosn"""
         total_weight = sum(self.target_allocations.values())
         if not 0.99 <= total_weight <= 1.01:
             raise ValueError(f"Target allocations must sum to 1. Got {total_weight:.2f}")
@@ -21,7 +24,7 @@ class Portfolio:
         return sum(stock.current_value() for stock in self.stocks)
     
     def current_values(self) -> Dict[str, float]:
-        
+
         return {stock.symbol: stock.current_value() for stock in self.stocks}
 
 
