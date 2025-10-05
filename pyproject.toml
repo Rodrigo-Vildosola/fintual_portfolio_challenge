@@ -1,0 +1,14 @@
+[project]
+name = "fintual_portfolio_challenge"
+version = "0.1.0"
+description = "Simple portfolio rebalancing exercise for Fintual technical challenge."
+authors = [{ name = "Rodrigo Vildósola" }]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pytest"
+]
+
+[tool.pytest.ini_options]
+addopts = "-v"
+testpaths = ["tests"]
