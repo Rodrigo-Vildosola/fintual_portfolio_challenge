@@ -85,3 +85,8 @@ print(portfolio.rebalance())
 
 4. **Return rebalance plan**
    The method returns a dictionary `{symbol: amount}` in currency units.
+
+
+## Disclaimer
+
+The tests from this project were created by assistance with AI tools.
