@@ -11,14 +11,17 @@ class Portfolio:
         self._validate_allocations()
 
     def _validate_allocations(self) -> None:
+        # It is critical to check wether our target allocations sum exactly 1
         total_weight = sum(self.target_allocations.values())
         if not 0.99 <= total_weight <= 1.01:
             raise ValueError(f"Target allocations must sum to 1. Got {total_weight:.2f}")
 
     def total_value(self) -> float:
+        """Get the total value of the portfolio"""
         return sum(stock.current_value() for stock in self.stocks)
     
     def current_values(self) -> Dict[str, float]:
+        
         return {stock.symbol: stock.current_value() for stock in self.stocks}
 
 
